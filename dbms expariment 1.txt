@@ -1,0 +1,172 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 5
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database karthik;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use karthik
+Database changed
+mysql>
+mysql> create table teacher(Rollno int(20),Name varchar(20),Gender varchar(1),DOB varchar(10),Mobileno int,dept varchar(5));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc teacher;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| Rollno   | int(20)     | YES  |     | NULL    |       |
+| Name     | varchar(20) | YES  |     | NULL    |       |
+| Gender   | varchar(1)  | YES  |     | NULL    |       |
+| DOB      | varchar(10) | YES  |     | NULL    |       |
+| Mobileno | int(11)     | YES  |     | NULL    |       |
+| dept     | varchar(5)  | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql>  create table teacherdept(Deptid int(20),deptname varchar(20),Rollno int(20));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc teacherdept;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| Deptid   | int(20)     | YES  |     | NULL    |       |
+| deptname | varchar(20) | YES  |     | NULL    |       |
+| Rollno   | int(20)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> create table student(stdid int(20),stdname varchar(20),stddept varchar(20),stdfees int(20),stdphno int(20));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| stdid   | int(20)     | YES  |     | NULL    |       |
+| stdname | varchar(20) | YES  |     | NULL    |       |
+| stddept | varchar(20) | YES  |     | NULL    |       |
+| stdfees | int(20)     | YES  |     | NULL    |       |
+| stdphno | int(20)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_karthik |
++-------------------+
+| student           |
+| teacher           |
+| teacherdept       |
++-------------------+
+3 rows in set (0.00 sec)
+
+mysql> create table faculty(Facid int(20),Facname varchar(20),Facdept varchar(10),salary int(20));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc faculty;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| Facid   | int(20)     | YES  |     | NULL    |       |
+| Facname | varchar(20) | YES  |     | NULL    |       |
+| Facdept | varchar(10) | YES  |     | NULL    |       |
+| salary  | int(20)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table studepartment(Deptid int(20),Deptname varchar(20),Rollno int(5));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_karthik |
++-------------------+
+| faculty           |
+| student           |
+| studepartment     |
+| teacher           |
+| teacherdept       |
++-------------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into faculty values(1,"Gowtham","CSE",10000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into faculty values(2,"ARUN","ECE",120000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into faculty values(3,"KARTHI","BME",12000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into faculty values(4,"VIKAS","IT",110000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from faculty;
++-------+---------+---------+--------+
+| Facid | Facname | Facdept | salary |
++-------+---------+---------+--------+
+|     1 | Gowtham | CSE     |  10000 |
+|     2 | ARUN    | ECE     | 120000 |
+|     3 | KARTHI  | BME     |  12000 |
+|     4 | VIKAS   | IT      | 110000 |
++-------+---------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> create table facultydept(Facid int(20),Facname varchar(20),salary int(20));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_karthik |
++-------------------+
+| faculty           |
+| facultydept       |
+| student           |
+| studepartment     |
+| teacher           |
+| teacherdept       |
++-------------------+
+6 rows in set (0.00 sec)
+
+mysql> drop table facultydept;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_karthik |
++-------------------+
+| faculty           |
+| student           |
+| studepartment     |
+| teacher           |
+| teacherdept       |
++-------------------+
+5 rows in set (0.00 sec)
+
+mysql> alter table teacherdept add address varchar(20);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc teacherdept;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| Deptid   | int(20)     | YES  |     | NULL    |       |
+| deptname | varchar(20) | YES  |     | NULL    |       |
+| Rollno   | int(20)     | YES  |     | NULL    |       |
+| address  | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql>
