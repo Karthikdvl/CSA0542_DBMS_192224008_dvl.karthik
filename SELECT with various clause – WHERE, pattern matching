@@ -1,0 +1,119 @@
+
+
+mysql> use karthik;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_karthik |
++-------------------+
+| faculty           |
+| mentees           |
+| student           |
+| studepartment     |
+| teacher           |
+| teacherdept       |
++-------------------+
+6 rows in set (0.00 sec)
+
+mysql> select* from mentees;
++-----------+---------+------+---------+------------+
+| Regno     | Name    | Dept | Address | Fathername |
++-----------+---------+------+---------+------------+
+| 192011560 | Balaji  | CSE  | Chennai | moorthi    |
+| 192011580 | Hithesh | EEE  | Tanjore | Velu       |
+| 192212580 | Kiran   | ECE  | Tirupur | Ramesh     |
+| 192211789 | Sunil   | AIDS | Tirupur | Ram        |
+| 192211459 | Keasva  | AIDS | Ongole  | Sam        |
++-----------+---------+------+---------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select* from mentees where Dept="AIDS";
++-----------+--------+------+---------+------------+
+| Regno     | Name   | Dept | Address | Fathername |
++-----------+--------+------+---------+------------+
+| 192211789 | Sunil  | AIDS | Tirupur | Ram        |
+| 192211459 | Keasva | AIDS | Ongole  | Sam        |
++-----------+--------+------+---------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select* from mentees where Name ="Balaji";
++-----------+--------+------+---------+------------+
+| Regno     | Name   | Dept | Address | Fathername |
++-----------+--------+------+---------+------------+
+| 192011560 | Balaji | CSE  | Chennai | moorthi    |
++-----------+--------+------+---------+------------+
+1 row in set (0.00 sec)
+
+mysql> alter table mentees add Marks int(10);
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> update mentees set Marks=99 where Dept="CSE";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentees set Marks=97 where Dept="AIDS";
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update mentees set Marks=90 where Name="Hithesh"
+    -> update mentees set Marks=90 where Name="Hithesh";
+
+mysql> update mentees set Marks=90 where Name="Hithesh";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+
+mysql> update mentees set Marks=91 where Fathername="Ramesh";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from mentees;
++-----------+---------+------+---------+------------+-------+
+| Regno     | Name    | Dept | Address | Fathername | Marks |
++-----------+---------+------+---------+------------+-------+
+| 192011560 | Balaji  | CSE  | Chennai | moorthi    |    99 |
+| 192011580 | Hithesh | EEE  | Tanjore | Velu       |    90 |
+| 192212580 | Kiran   | ECE  | Tirupur | Ramesh     |    91 |
+| 192211789 | Sunil   | AIDS | Tirupur | Ram        |    97 |
+| 192211459 | Keasva  | AIDS | Ongole  | Sam        |    97 |
++-----------+---------+------+---------+------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select*from mentees where Name like 'B%';
++-----------+--------+------+---------+------------+-------+
+| Regno     | Name   | Dept | Address | Fathername | Marks |
++-----------+--------+------+---------+------------+-------+
+| 192011560 | Balaji | CSE  | Chennai | moorthi    |    99 |
++-----------+--------+------+---------+------------+-------+
+1 row in set (0.00 sec)
+
+mysql> select*from mentees where Dept like '%S%';
++-----------+--------+------+---------+------------+-------+
+| Regno     | Name   | Dept | Address | Fathername | Marks |
++-----------+--------+------+---------+------------+-------+
+| 192011560 | Balaji | CSE  | Chennai | moorthi    |    99 |
+| 192211789 | Sunil  | AIDS | Tirupur | Ram        |    97 |
+| 192211459 | Keasva | AIDS | Ongole  | Sam        |    97 |
++-----------+--------+------+---------+------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select*from mentees where Address like '%i';
++-----------+--------+------+---------+------------+-------+
+| Regno     | Name   | Dept | Address | Fathername | Marks |
++-----------+--------+------+---------+------------+-------+
+| 192011560 | Balaji | CSE  | Chennai | moorthi    |    99 |
++-----------+--------+------+---------+------------+-------+
+1 row in set (0.00 sec)
+
+mysql> select *from mentees where Address like 'O__o_e';
++-----------+--------+------+---------+------------+-------+
+| Regno     | Name   | Dept | Address | Fathername | Marks |
++-----------+--------+------+---------+------------+-------+
+| 192211459 | Keasva | AIDS | Ongole  | Sam        |    97 |
++-----------+--------+------+---------+------------+-------+
+1 row in set (0.00 sec)
+
+mysql>
