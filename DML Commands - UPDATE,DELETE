@@ -1,0 +1,62 @@
+
+
+mysql> use karthik;
+Database changed
+
+mysql>
+mysql> select*from mentees;
++-----------+---------+------+---------+------------+
+| Regno     | Name    | Dept | Address | Fathername |
++-----------+---------+------+---------+------------+
+| 192011560 | Balaji  | CSE  | Erode   | moorthi    |
+| 192011259 | Varun   | CSE  | nellore | muthu      |
+| 192011580 | Hithesh | ECE  | Tanjore | Velu       |
+| 192212580 | Kiran   | ECE  | Tirupur | Ramesh     |
++-----------+---------+------+---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> update mentees set Dept ="EEE" where Regno=192011580;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from mentees;
++-----------+---------+------+---------+------------+
+| Regno     | Name    | Dept | Address | Fathername |
++-----------+---------+------+---------+------------+
+| 192011560 | Balaji  | CSE  | Erode   | moorthi    |
+| 192011259 | Varun   | CSE  | nellore | muthu      |
+| 192011580 | Hithesh | EEE  | Tanjore | Velu       |
+| 192212580 | Kiran   | ECE  | Tirupur | Ramesh     |
++-----------+---------+------+---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> update mentees set Address="Chennai" where Name="Balaji";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from mentees;
++-----------+---------+------+---------+------------+
+| Regno     | Name    | Dept | Address | Fathername |
++-----------+---------+------+---------+------------+
+| 192011560 | Balaji  | CSE  | Chennai | moorthi    |
+| 192011259 | Varun   | CSE  | nellore | muthu      |
+| 192011580 | Hithesh | EEE  | Tanjore | Velu       |
+| 192212580 | Kiran   | ECE  | Tirupur | Ramesh     |
++-----------+---------+------+---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> delete from mentees where Fathername="muthu";
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select* from mentees;
++-----------+---------+------+---------+------------+
+| Regno     | Name    | Dept | Address | Fathername |
++-----------+---------+------+---------+------------+
+| 192011560 | Balaji  | CSE  | Chennai | moorthi    |
+| 192011580 | Hithesh | EEE  | Tanjore | Velu       |
+| 192212580 | Kiran   | ECE  | Tirupur | Ramesh     |
++-----------+---------+------+---------+------------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql>
