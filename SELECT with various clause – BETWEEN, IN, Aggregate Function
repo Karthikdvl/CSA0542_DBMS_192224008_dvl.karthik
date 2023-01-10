@@ -1,0 +1,128 @@
+
+mysql> use karthik;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_karthik |
++-------------------+
+| faculty           |
+| mentees           |
+| student           |
+| studepartment     |
+| teacher           |
+| teacherdept       |
++-------------------+
+6 rows in set (0.00 sec)
+
+mysql> select* from mentees;
++-----------+---------+------+---------+------------+-------+
+| Regno     | Name    | Dept | Address | Fathername | Marks |
++-----------+---------+------+---------+------------+-------+
+| 192011560 | Balaji  | CSE  | Chennai | moorthi    |    99 |
+| 192011580 | Hithesh | EEE  | Tanjore | Velu       |    90 |
+| 192212580 | Kiran   | ECE  | Tirupur | Ramesh     |    91 |
+| 192211789 | Sunil   | AIDS | Tirupur | Ram        |    97 |
+| 192211459 | Keasva  | AIDS | Ongole  | Sam        |    97 |
++-----------+---------+------+---------+------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> alter table mentees add subject varchar(20);
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> update mentees set subject="PDSD" where Dept="ECE";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentees set subject="DBMS" where Dept="CSE";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentees set subject="Java" where Dept="AIDS";
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update mentees set subject="PDSD" where Dept="EEE";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentees set subject="FOC" where Dept="EEE";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentees set subject="JAVA" where Dept="AIDS";
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select* from mentees;
++-----------+---------+------+---------+------------+-------+---------+
+| Regno     | Name    | Dept | Address | Fathername | Marks | subject |
++-----------+---------+------+---------+------------+-------+---------+
+| 192011560 | Balaji  | CSE  | Chennai | moorthi    |    99 | DBMS    |
+| 192011580 | Hithesh | EEE  | Tanjore | Velu       |    90 | FOC     |
+| 192212580 | Kiran   | ECE  | Tirupur | Ramesh     |    91 | PDSD    |
+| 192211789 | Sunil   | AIDS | Tirupur | Ram        |    97 | JAVA    |
+| 192211459 | Keasva  | AIDS | Ongole  | Sam        |    97 | JAVA    |
++-----------+---------+------+---------+------------+-------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select*from mentees where Marks BETWEEN 95 and 99;
++-----------+--------+------+---------+------------+-------+---------+
+| Regno     | Name   | Dept | Address | Fathername | Marks | subject |
++-----------+--------+------+---------+------------+-------+---------+
+| 192011560 | Balaji | CSE  | Chennai | moorthi    |    99 | DBMS    |
+| 192211789 | Sunil  | AIDS | Tirupur | Ram        |    97 | JAVA    |
+| 192211459 | Keasva | AIDS | Ongole  | Sam        |    97 | JAVA    |
++-----------+--------+------+---------+------------+-------+---------+
+3 rows in set (0.00 sec)
+
+mysql>  select*from mentees where subject IN('FOC');
++-----------+---------+------+---------+------------+-------+---------+
+| Regno     | Name    | Dept | Address | Fathername | Marks | subject |
++-----------+---------+------+---------+------------+-------+---------+
+| 192011580 | Hithesh | EEE  | Tanjore | Velu       |    90 | FOC     |
++-----------+---------+------+---------+------------+-------+---------+
+1 row in set (0.00 sec)
+
+mysql> select*from mentees where Marks NOT BETWEEN 95 and 99;
++-----------+---------+------+---------+------------+-------+---------+
+| Regno     | Name    | Dept | Address | Fathername | Marks | subject |
++-----------+---------+------+---------+------------+-------+---------+
+| 192011580 | Hithesh | EEE  | Tanjore | Velu       |    90 | FOC     |
+| 192212580 | Kiran   | ECE  | Tirupur | Ramesh     |    91 | PDSD    |
++-----------+---------+------+---------+------------+-------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select sum(Marks) from mentees where Dept="AIDS";
++------------+
+| sum(Marks) |
++------------+
+|        194 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(Marks) as Average from mentees;
++---------+
+| Average |
++---------+
+| 94.8000 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select min(Marks) as minimum from mentees;
++---------+
+| minimum |
++---------+
+|      90 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select max(Marks) as maximum from mentees;
++---------+
+| maximum |
++---------+
+|      99 |
++---------+
+1 row in set (0.00 sec)
+
+mysql>
