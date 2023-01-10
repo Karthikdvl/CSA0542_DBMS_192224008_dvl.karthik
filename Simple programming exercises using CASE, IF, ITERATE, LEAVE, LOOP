@@ -1,0 +1,118 @@
+
+mysql> use karthik;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_karthik |
++-------------------+
+| faculty           |
+| marks_view        |
+| mdept             |
+| mentees           |
+| mentees1          |
+| per               |
+| student           |
+| studepartment     |
+| teacher           |
+| teacherdept       |
++-------------------+
+10 rows in set (0.00 sec)
+
+mysql> mysql> select*from mentees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mysql> select*from mentees' at line 1
+mysql>  select*from mentees;
++-----------+---------+------+---------+------------+-------+---------+
+| Regno     | Name    | Dept | Address | Fathername | Marks | subject |
++-----------+---------+------+---------+------------+-------+---------+
+| 192011560 | Balaji  | CSE  | Chennai | moorthi    |    99 | DBMS    |
+| 192011580 | Hithesh | EEE  | Tanjore | Velu       |    90 | FOC     |
+| 192212580 | Kiran   | ECE  | Tirupur | Ramesh     |    91 | PDSD    |
+| 192211789 | Sunil   | AIDS | Tirupur | Ram        |    97 | JAVA    |
+| 192211459 | Keasva  | AIDS | Ongole  | Sam        |    97 | JAVA    |
++-----------+---------+------+---------+------------+-------+---------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT Name, Marks,CASE WHEN Marks > 95 THEN 'Excellent' WHEN Marks >90 THEN 'Good' ELSE 'average' END AS performance FROM mentees;
++---------+-------+-------------+
+| Name    | Marks | performance |
++---------+-------+-------------+
+| Balaji  |    99 | Excellent   |
+| Hithesh |    90 | average     |
+| Kiran   |    91 | Good        |
+| Sunil   |    97 | Excellent   |
+| Keasva  |    97 | Excellent   |
++---------+-------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select Name,Marks,if(Marks>=95,"Excellent marks","Good marks") from mentees;
++---------+-------+----------------------------------------------+
+| Name    | Marks | if(Marks>=95,"Excellent marks","Good marks") |
++---------+-------+----------------------------------------------+
+| Balaji  |    99 | Excellent marks                              |
+| Hithesh |    90 | Good marks                                   |
+| Kiran   |    91 | Good marks                                   |
+| Sunil   |    97 | Excellent marks                              |
+| Keasva  |    97 | Excellent marks                              |
++---------+-------+----------------------------------------------+
+5 rows in set (0.00 sec)
+
+mysql> DELIMITER $$
+mysql> CREATE FUNCTION REPEAT_DEMO(INC INT)
+    -> RETURNS CHAR(40)
+    -> DETERMINISTIC
+    -> BEGIN
+    ->  DECLARE INCOME INT;
+    -> SET INCOME=0;
+    -> REPEAT
+    -> SET INCOME=INCOME+INC;
+    -> UNTIL INCOME>4000
+    -> END REPEAT;
+    -> RETURN "INCOME>4000 DETECTED";
+    -> END;
+    -> $$
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT REPEAT_DEMO(3000);$$
++----------------------+
+| REPEAT_DEMO(3000)    |
++----------------------+
+| INCOME>4000 DETECTED |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT REPEAT_DEMO(4000);$$
++----------------------+
+| REPEAT_DEMO(4000)    |
++----------------------+
+| INCOME>4000 DETECTED |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> DELIMITER $$
+mysql> CREATE FUNCTION WHILE_DEMO(VALUE CHAR(1))
+    -> RETURNS CHAR(20)
+    -> DETERMINISTIC
+    -> BEGIN
+    -> DECLARE STR CHAR(100);
+    -> DECLARE I INT;
+    -> SET STR='';
+    -> SET I=1;
+    -> LABEL:
+    -> WHILE I<=5 DO
+    -> SET STR =CONCAT(STR,VALUE);
+    -> SET I=I+1;
+    -> END WHILE LABEL;
+    -> RETURN STR;
+    -> END;
+    -> $$
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT WHILE_DEMO('A');$$
++-----------------+
+| WHILE_DEMO('A') |
++-----------------+
+| AAAAA           |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql>
