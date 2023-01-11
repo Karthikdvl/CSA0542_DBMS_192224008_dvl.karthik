@@ -1,0 +1,39 @@
+mysql> use karthik;
+Database changed
+mysql> select*from mentees;
++-----------+---------+------+---------+------------+-------+---------+
+| Regno     | Name    | Dept | Address | Fathername | Marks | subject |
++-----------+---------+------+---------+------------+-------+---------+
+| 192011560 | Balaji  | CSE  | Chennai | moorthi    |    99 | DBMS    |
+| 192011580 | Hithesh | EEE  | Tanjore | Velu       |    90 | FOC     |
+| 192212580 | Kiran   | ECE  | Tirupur | Ramesh     |    91 | PDSD    |
+| 192211789 | Sunil   | AIDS | Tirupur | Ram        |    97 | JAVA    |
+| 192211459 | Keasva  | AIDS | Ongole  | Sam        |    97 | JAVA    |
++-----------+---------+------+---------+------------+-------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select repeat(Name,2) from mentees;
++----------------+
+| repeat(Name,2) |
++----------------+
+| BalajiBalaji   |
+| HitheshHithesh |
+| KiranKiran     |
+| SunilSunil     |
+| KeasvaKeasva   |
++----------------+
+5 rows in set (0.00 sec)
+
+mysql> select repeat(Dept,2) from mentees;
++----------------+
+| repeat(Dept,2) |
++----------------+
+| CSECSE         |
+| EEEEEE         |
+| ECEECE         |
+| AIDSAIDS       |
+| AIDSAIDS       |
++----------------+
+5 rows in set (0.00 sec)
+
+mysql>
