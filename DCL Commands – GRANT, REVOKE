@@ -1,0 +1,86 @@
+
+mysql> use karthik;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_karthik |
++-------------------+
+| faculty           |
+| marks_view        |
+| mdept             |
+| mentees           |
+| mentees1          |
+| movies            |
+| per               |
+| student           |
+| studepartment     |
+| teacher           |
+| teacherdept       |
++-------------------+
+11 rows in set (0.00 sec)
+
+mysql> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| stdid   | int(20)     | NO   | PRI | 0       |       |
+| stdname | varchar(20) | YES  |     | NULL    |       |
+| stddept | varchar(20) | YES  |     | NULL    |       |
+| stdfees | int(20)     | YES  |     | NULL    |       |
+| stdphno | int(20)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create user Balaji;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant all on student to Balaji;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show grants for Balaji;
++-------------------------------------------------------------+
+| Grants for Balaji@%                                         |
++-------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'Balaji'@'%'                          |
+| GRANT ALL PRIVILEGES ON `karthik`.`student` TO 'Balaji'@'%' |
++-------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> revoke all on student from Balaji;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for Balaji;
++------------------------------------+
+| Grants for Balaji@%                |
++------------------------------------+
+| GRANT USAGE ON *.* TO 'Balaji'@'%' |
++------------------------------------+
+1 row in set (0.00 sec)
+
+
+mysql> grant select,update on mentees to Balaji;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for Balaji;
++-------------------------------------------------------------+
+| Grants for Balaji@%                                         |
++-------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'Balaji'@'%'                          |
+| GRANT SELECT, UPDATE ON `karthik`.`mentees` TO 'Balaji'@'%' |
++-------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+
+mysql> revoke update on mentees from Balaji;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for Balaji;
++-----------------------------------------------------+
+| Grants for Balaji@%                                 |
++-----------------------------------------------------+
+| GRANT USAGE ON *.* TO 'Balaji'@'%'                  |
+| GRANT SELECT ON `karthik`.`mentees` TO 'Balaji'@'%' |
++-----------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql>
