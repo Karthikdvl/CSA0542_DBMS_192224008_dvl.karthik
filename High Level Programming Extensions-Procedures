@@ -1,0 +1,60 @@
+mysql>
+mysql> use karthik;
+Database changed
+mysql> select*from mentees;
++-----------+---------+------+---------+------------+-------+---------+
+| Regno     | Name    | Dept | Address | Fathername | Marks | subject |
++-----------+---------+------+---------+------------+-------+---------+
+| 192011560 | Balaji  | CSE  | Chennai | moorthi    |    99 | DBMS    |
+| 192011580 | Hithesh | EEE  | Tanjore | Velu       |    90 | FOC     |
+| 192212580 | Kiran   | ECE  | Tirupur | Ramesh     |    91 | PDSD    |
+| 192211789 | Sunil   | AIDS | Tirupur | Ram        |    97 | JAVA    |
+| 192211459 | Keasva  | AIDS | Ongole  | Sam        |    97 | JAVA    |
++-----------+---------+------+---------+------------+-------+---------+
+5 rows in set (0.00 sec)
+
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE mentee_info()
+    ->  BEGIN
+    -> select*from mentees;
+    -> END; //
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> CALL mentee_info();
+    -> //
++-----------+---------+------+---------+------------+-------+---------+
+| Regno     | Name    | Dept | Address | Fathername | Marks | subject |
++-----------+---------+------+---------+------------+-------+---------+
+| 192011560 | Balaji  | CSE  | Chennai | moorthi    |    99 | DBMS    |
+| 192011580 | Hithesh | EEE  | Tanjore | Velu       |    90 | FOC     |
+| 192212580 | Kiran   | ECE  | Tirupur | Ramesh     |    91 | PDSD    |
+| 192211789 | Sunil   | AIDS | Tirupur | Ram        |    97 | JAVA    |
+| 192211459 | Keasva  | AIDS | Ongole  | Sam        |    97 | JAVA    |
++-----------+---------+------+---------+------------+-------+---------+
+5 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> CREATE PROCEDURE while_loop()
+    -> BEGIN
+    -> DECLARE num INT default 1;
+    -> DECLARE res Varchar(50) default '';
+    -> WHILE num < 78125 DO
+    -> SET res = CONCAT(res,num,',');
+    -> SET num = num*5;
+    -> END While;
+    -> SELECT res;
+    -> END //
+
+mysql> call while_loop()
+    -> //
++----------------------------+
+| res                        |
++----------------------------+
+| 1,5,25,125,625,3125,15625, |
++----------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>
